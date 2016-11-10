@@ -6,7 +6,7 @@ fi
 
 dir=$1;
 todir=$2;
-changefenbianlv=$3;
+changeResolution=$3;
 if [[ ! -d "$dir" ]]; then
     exit;
 fi
@@ -19,8 +19,8 @@ if [[ -f "$scriptname" ]]; then
 fi
 for name in `ls $dir`
 do
-   echo " echo 'changing $name to $changefenbianlv'; " >> $scriptname; 
-   echo " ffmpeg -i $dir/$name -s $changefenbianlv $todir/$changefenbianlv.$name.mp4" >> $scriptname; 
+   echo " echo 'changing $name to $changeResolution'; " >> $scriptname; 
+   echo " ffmpeg -i $dir/$name -s $changeResolution $todir/$changeResolution.$name.mp4" >> $scriptname; 
 done
 
 if [[ -f "$scriptname" ]]; then
