@@ -16,7 +16,7 @@ fi
 #处理文件名
 name=`basename $inputFileConfig .txt` #文件名
 # echo $name
-fenbianlv=`echo $name | cut -d "." -f2` #分辨率 (最终是800x600) , 如果为空 , 则不转换分辨率
+resolution=`echo $name | cut -d "." -f2` #分辨率 (最终是800x600) , 如果为空 , 则不转换分辨率
 
 
 tmpDir="tmp/$inputFileConfig/" #临时目录
@@ -90,12 +90,12 @@ if [[ -f $tmpConcatFile ]]; then
 	rm aaa.*.$outputVideoFile; #删除临时文件
 fi
 
-echo "设置分辨率$fenbianlv";
-if [[ ! -z $fenbianlv ]]; then
-	echo "执行转换分辨率中....[ $fenbianlv ]"
+echo "设置分辨率$resolution";
+if [[ ! -z $resolution ]]; then
+	echo "执行转换分辨率中....[ $resolution ]"
 	mv $outputVideoFile $tmpDir/out.out.mp4;
-	echo "ffmpeg -i $tmpDir/out.out.mp4 -s $fenbianlv $outputVideoFile";
-	ffmpeg -i $tmpDir/out.out.mp4 -s $fenbianlv $outputVideoFile  > log 2>&1;
+	echo "ffmpeg -i $tmpDir/out.out.mp4 -s $resolution $outputVideoFile";
+	ffmpeg -i $tmpDir/out.out.mp4 -s $resolution $outputVideoFile  > log 2>&1;
 	# read sd;
 	rm $tmpDir/out.out.mp4;
 
